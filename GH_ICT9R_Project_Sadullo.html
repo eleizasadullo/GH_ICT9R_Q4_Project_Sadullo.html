@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Length Converter</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+      .container { text-align: center; }
+      .form-control, .btn { margin: 10px 0; }
+      .result { font-size: 24px; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Length Converter</h1>
+      <div class="form-group">
+        <label for="inputLength">Length (in millimeters):</label>
+        <input type="text" class="form-control" id="inputLength" placeholder="Enter value to convert">
+      </div>
+      <div class="form-group">
+        <label for="selectTo">Convert to:</label>
+        <select class="form-control" id="selectTo">
+          <option value="centimeters">Centimeters</option>
+          <option value="meters">Meters</option>
+          <option value="kilometers">Kilometers</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="convert()">Convert</button>
+      <div class="result" id="result"></div>
+    </div>
+    <script>
+      function convert() {
+        var length = document.getElementById("inputLength").value;
+        var to = document.getElementById("selectTo").value;
+        
+        // Convert to centimeters
+        if (to === "centimeters") {
+          length /= 10;
+        } else if (to === "meters") {
+          length /= 1000;
+        } else if (to === "kilometers") {
+          length /= 1000000;
+        }
+        
+        document.getElementById("result").innerHTML = length.toFixed(2) + " " + to;
+      }
+    </script>
+  </body>
+</html>
